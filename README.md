@@ -6,8 +6,6 @@ Trusted Platform Module (TPM 2.0) is a microcontroller that stores keys,
 passwords, and digital certificates. A TPM 2.0 offers the capabilities as
 part of the overall platform security requirements.
 
-This feature depends on feature/tpm.
-
 ### Clear TPM
 For TPM 2.0, the following typical steps can be performed to get the TPM
 ready for use:
