@@ -32,6 +32,7 @@ PACKAGES = " \
     libtss2 \
     libtss2-dev \
     libtss2-staticdev \
+    libtss2-doc \
     libtctidevice \
     libtctidevice-dev \
     libtctidevice-staticdev \
@@ -53,6 +54,9 @@ FILES_libtss2-dev = " \
 "
 FILES_libtss2-staticdev = " \
     ${libdir}/libsapi.a \
+"
+FILES_libtss2-doc = " \
+    ${mandir} \
 "
 FILES_libtctidevice = "${libdir}/libtcti-device.so.*"
 FILES_libtctidevice-dev = " \
