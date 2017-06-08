@@ -22,10 +22,8 @@ SRC_URI = " \
 # CAPS? SRSLY?
 S = "${WORKDIR}/${@d.getVar('BPN',d).upper()}"
 
-# https://lists.yoctoproject.org/pipermail/yocto/2013-November/017042.html
-SRCREV = "2186791bd2994235fd2ef72ac2356d042f5cb653"
-PVBASE := "${PV}"
-PV = "${PVBASE}.${SRCPV}"
+SRCREV = "1fa2f4d12449d5d639032fee28d922fe9d4877b5"
+PV = "1.1.0+git${SRCPV}"
 
 PACKAGES = " \
     ${PN}-dbg \

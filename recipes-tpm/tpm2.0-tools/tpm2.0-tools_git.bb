@@ -12,10 +12,8 @@ SRC_URI = " \
 "
 
 S = "${WORKDIR}/tpm2.0-tools"
-# https://lists.yoctoproject.org/pipermail/yocto/2013-November/017042.html
-SRCREV = "287ddf88411146fabf16f9c812cb3caa411f9d17"
-PVBASE := "${PV}"
-PV = "${PVBASE}.${SRCPV}"
+SRCREV = "412776beba7cb6efdb1e34533e6d27b278d38a24"
+PV = "2.0.0+git${SRCPV}"
 
 inherit autotools
 

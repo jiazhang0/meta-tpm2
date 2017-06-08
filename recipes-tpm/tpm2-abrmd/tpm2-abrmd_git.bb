@@ -18,10 +18,8 @@ SRC_URI = " \
     file://tpm2-abrmd.default \
     "
 
-# https://lists.yoctoproject.org/pipermail/yocto/2013-November/017042.html
-SRCREV = "129c82f92122909136e94f3642a0e9d668d8e26e"
-PVBASE := "${PV}"
-PV = "${PVBASE}.${SRCPV}"
+SRCREV = "dbf76be92c3e30a53bd42674fe6bf0d028f6d1b7"
+PV = "1.0.0+git${SRCPV}"
 S = "${WORKDIR}/${BPN}"
 
 inherit autotools pkgconfig systemd update-rc.d useradd
