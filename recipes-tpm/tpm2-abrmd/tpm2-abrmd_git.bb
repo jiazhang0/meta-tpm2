@@ -13,12 +13,13 @@ DEPENDS += "autoconf-archive dbus glib-2.0 pkgconfig tpm2.0-tss"
 RDEPENDS_${PN} += "libgcc dbus-glib"
 
 SRC_URI = " \
-	git://github.com/01org/tpm2-abrmd.git;protocol=http;branch=master;name=tpm2-abrmd;destsuffix=tpm2-abrmd \
-    file://tpm2-abrmd-init.sh \
-    file://tpm2-abrmd.default \
-    "
+           git://github.com/01org/tpm2-abrmd.git;branch=master;name=tpm2-abrmd;destsuffix=tpm2-abrmd \
+           file://Fix-build-failure-when-searching-tabrmd.h.patch \
+           file://tpm2-abrmd-init.sh \
+           file://tpm2-abrmd.default \
+          "
 
-SRCREV = "dbf76be92c3e30a53bd42674fe6bf0d028f6d1b7"
+SRCREV = "fda39c374f8e7003413d7b790c0d36b54674b3fd"
 PV = "1.0.0+git${SRCPV}"
 S = "${WORKDIR}/${BPN}"
 
@@ -38,21 +39,24 @@ USERADD_PARAM_${PN} = "-M -d /var/lib/tpm -s /bin/false -g tss tss"
 # break out tcti into a package: libtcti-tabrmd
 # package up the service file
 
-do_configure_prepend () {
+do_configure_prepend() {
 	# execute the bootstrap script
 	currentdir=$(pwd)
-	cd ${S}
+	cd "${S}"
 	ACLOCAL="aclocal --system-acdir=${STAGING_DATADIR}/aclocal" ./bootstrap --force
-	cd ${currentdir}
+	cd "${currentdir}"
 }
 
-EXTRA_OECONF += " --with-systemdsystemunitdir=${systemd_system_unitdir} --with-udevrulesdir=${sysconfdir}/udev/rules.d"
+EXTRA_OECONF += " \
+                 --with-systemdsystemunitdir=${systemd_system_unitdir} \
+                 --with-udevrulesdir=${sysconfdir}/udev/rules.d \
+                "
 
 do_install_append() {
-        install -d ${D}${sysconfdir}/init.d
-        install -m 0755 ${WORKDIR}/tpm2-abrmd-init.sh ${D}${sysconfdir}/init.d/tpm2-abrmd
-        install -d ${D}${sysconfdir}/default
-        install -m 0644 ${WORKDIR}/tpm2-abrmd.default ${D}${sysconfdir}/default/tpm2-abrmd
+        install -d "${D}${sysconfdir}/init.d"
+        install -m 0755 "${WORKDIR}/tpm2-abrmd-init.sh" "${D}${sysconfdir}/init.d/tpm2-abrmd"
+        install -d "${D}${sysconfdir}/default"
+        install -m 0644 "${WORKDIR}/tpm2-abrmd.default" "${D}${sysconfdir}/default/tpm2-abrmd"
 }
 
 BBCLASSEXTEND = "native"
