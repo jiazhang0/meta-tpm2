@@ -25,6 +25,14 @@ S = "${WORKDIR}/${@d.getVar('BPN',d).upper()}"
 SRCREV = "1fa2f4d12449d5d639032fee28d922fe9d4877b5"
 PV = "1.1.0+git${SRCPV}"
 
+RRECOMMENDS_${PN} += "\
+        kernel-module-tpm-crb \
+        kernel-module-tpm-tis \
+"
+
+TPM_DESCRIPTION = 'device/description'
+FAMILY_MAJOR = 'TPM 2.0'
+
 PACKAGES = " \
     ${PN}-dbg \
     libtss2 \
