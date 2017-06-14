@@ -26,8 +26,8 @@ SRCREV = "1fa2f4d12449d5d639032fee28d922fe9d4877b5"
 PV = "1.1.0+git${SRCPV}"
 
 RRECOMMENDS_${PN} += "\
-        kernel-module-tpm-crb \
-        kernel-module-tpm-tis \
+    kernel-module-tpm-crb \
+    kernel-module-tpm-tis \
 "
 
 TPM_DESCRIPTION = 'device/description'

@@ -3,8 +3,3 @@ LICENSE = "MIT"
 PR = "r0"
 
 inherit packagegroup
-
-RRECOMMENDS_${PN} = "\
-    kernel-module-tpm-tis \
-    kernel-module-tpm-crb \
-"
