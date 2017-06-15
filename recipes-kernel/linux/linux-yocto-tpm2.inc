@@ -1,6 +1,6 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/linux-yocto-tpm2:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/linux-yocto:"
 
 SRC_URI += " \
-    ${@bb.utils.contains('MACHINE_FEATURES', 'tpm2','file://tpm2.scc','', d)} \
-    ${@bb.utils.contains('MACHINE_FEATURES', 'tpm2','file://tpm2.cfg','', d)} \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'tpm2', \
+                         'file://tpm2.scc file://tpm2.cfg', '', d)} \
 "
