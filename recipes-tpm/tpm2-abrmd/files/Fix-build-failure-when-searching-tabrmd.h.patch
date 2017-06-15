@@ -1,32 +1,32 @@
-From 3d8fd6a15065ce50e8a1a4f152135f013366e406 Mon Sep 17 00:00:00 2001
+From 034e9cd7e539e1feda2fbe9a3646e28156856594 Mon Sep 17 00:00:00 2001
 From: Lans Zhang <jia.zhang@windriver.com>
-Date: Tue, 13 Jun 2017 14:49:33 +0800
+Date: Thu, 15 Jun 2017 10:21:02 +0800
 Subject: [PATCH] Fix build failure when searching tabrmd.h
 
 Signed-off-by: Lans Zhang <jia.zhang@windriver.com>
 ---
- Makefile.am                               |  2 +-
- src/access-broker.c                       |  2 +-
- src/include/tabrmd.h                      | 56 -------------------------------
- src/include/tcti-tabrmd.h                 |  2 +-
- src/include/tss2/tabrmd.h                 | 56 +++++++++++++++++++++++++++++++
- src/resource-manager.c                    |  2 +-
- src/tabrmd-error.c                        |  2 +-
- src/tabrmd.c                              |  2 +-
- src/tcti-tabrmd.c                         |  2 +-
- test/integration/hash-sequence.c          |  2 +-
- test/integration/password-authorization.c |  2 +-
- test/integration/tcti-cancel.c            |  2 +-
- test/integration/tcti-set-locality.c      |  2 +-
+ Makefile.am                                   |  2 +-
+ src/access-broker.c                           |  2 +-
+ src/include/tabrmd.h                          | 56 ---------------------------
+ src/include/tcti-tabrmd.h                     |  2 +-
+ src/include/tss2/tabrmd.h                     | 56 +++++++++++++++++++++++++++
+ src/resource-manager.c                        |  2 +-
+ src/tabrmd-error.c                            |  2 +-
+ src/tabrmd.c                                  |  2 +-
+ src/tcti-tabrmd.c                             |  2 +-
+ test/integration/hash-sequence.int.c          |  2 +-
+ test/integration/password-authorization.int.c |  2 +-
+ test/integration/tcti-cancel.int.c            |  2 +-
+ test/integration/tcti-set-locality.int.c      |  2 +-
  13 files changed, 67 insertions(+), 67 deletions(-)
  delete mode 100644 src/include/tabrmd.h
  create mode 100644 src/include/tss2/tabrmd.h
 
 diff --git a/Makefile.am b/Makefile.am
-index c3c1551..19d3468 100644
+index 5f88429..4733d4f 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -82,7 +82,7 @@ install-data-hook:
+@@ -90,7 +90,7 @@ install-data-hook:
                  $(DESTDIR)$(mandir)/man3/tss2_tcti_tabrmd_init_full.3
  
  tpm2_abrmddir      = $(includedir)/tss2
@@ -236,10 +236,10 @@ index d6d78ea..52418de 100644
  #include "tcti-tabrmd.h"
  #include "tcti-tabrmd-priv.h"
  #include "tpm2-header.h"
-diff --git a/test/integration/hash-sequence.c b/test/integration/hash-sequence.c
+diff --git a/test/integration/hash-sequence.int.c b/test/integration/hash-sequence.int.c
 index cf8331d..fd489f9 100644
---- a/test/integration/hash-sequence.c
-+++ b/test/integration/hash-sequence.c
+--- a/test/integration/hash-sequence.int.c
++++ b/test/integration/hash-sequence.int.c
 @@ -34,7 +34,7 @@
  
  #include <sapi/tpm20.h>
@@ -249,10 +249,10 @@ index cf8331d..fd489f9 100644
  #include "tcti-tabrmd.h"
  #include "common.h"
  
-diff --git a/test/integration/password-authorization.c b/test/integration/password-authorization.c
+diff --git a/test/integration/password-authorization.int.c b/test/integration/password-authorization.int.c
 index e6298ef..5416eaa 100644
---- a/test/integration/password-authorization.c
-+++ b/test/integration/password-authorization.c
+--- a/test/integration/password-authorization.int.c
++++ b/test/integration/password-authorization.int.c
 @@ -32,7 +32,7 @@
  #include <glib.h>
  #include <inttypes.h>
@@ -262,10 +262,10 @@ index e6298ef..5416eaa 100644
  #include "tcti-tabrmd.h"
  #include "common.h"
  
-diff --git a/test/integration/tcti-cancel.c b/test/integration/tcti-cancel.c
+diff --git a/test/integration/tcti-cancel.int.c b/test/integration/tcti-cancel.int.c
 index 31f0f9a..c2a808b 100644
---- a/test/integration/tcti-cancel.c
-+++ b/test/integration/tcti-cancel.c
+--- a/test/integration/tcti-cancel.int.c
++++ b/test/integration/tcti-cancel.int.c
 @@ -27,7 +27,7 @@
  #include <glib.h>
  #include <inttypes.h>
@@ -275,10 +275,10 @@ index 31f0f9a..c2a808b 100644
  #include "tcti-tabrmd.h"
  #include "common.h"
  
-diff --git a/test/integration/tcti-set-locality.c b/test/integration/tcti-set-locality.c
+diff --git a/test/integration/tcti-set-locality.int.c b/test/integration/tcti-set-locality.int.c
 index 6b7509b..0a54b6a 100644
---- a/test/integration/tcti-set-locality.c
-+++ b/test/integration/tcti-set-locality.c
+--- a/test/integration/tcti-set-locality.int.c
++++ b/test/integration/tcti-set-locality.int.c
 @@ -27,7 +27,7 @@
  #include <glib.h>
  #include <inttypes.h>

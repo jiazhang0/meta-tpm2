@@ -19,7 +19,7 @@ SRC_URI = " \
            file://tpm2-abrmd.default \
           "
 
-SRCREV = "fda39c374f8e7003413d7b790c0d36b54674b3fd"
+SRCREV = "9a378323a812c716b1e1f1db4f8da204e9fe6398"
 PV = "1.0.0+git${SRCPV}"
 S = "${WORKDIR}/${BPN}"
 
