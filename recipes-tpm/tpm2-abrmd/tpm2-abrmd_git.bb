@@ -14,12 +14,11 @@ RDEPENDS_${PN} += "libgcc dbus-glib"
 
 SRC_URI = " \
            git://github.com/01org/tpm2-abrmd.git;branch=master;name=tpm2-abrmd;destsuffix=tpm2-abrmd \
-           file://Fix-build-failure-when-searching-tabrmd.h.patch \
            file://tpm2-abrmd-init.sh \
            file://tpm2-abrmd.default \
           "
 
-SRCREV = "9a378323a812c716b1e1f1db4f8da204e9fe6398"
+SRCREV = "4f0bd204d07176084b245d005df665fbfdf68db5"
 PV = "1.0.0+git${SRCPV}"
 S = "${WORKDIR}/${BPN}"
 
