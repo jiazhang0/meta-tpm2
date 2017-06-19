@@ -38,6 +38,11 @@ USERADD_PARAM_${PN} = "-M -d /var/lib/tpm -s /bin/false -g tss tss"
 # break out tcti into a package: libtcti-tabrmd
 # package up the service file
 
+EXTRA_OECONF += " \
+                 --with-systemdsystemunitdir=${systemd_system_unitdir} \
+                 --with-udevrulesdir=${sysconfdir}/udev/rules.d \
+                "
+
 do_configure_prepend() {
 	# execute the bootstrap script
 	currentdir=$(pwd)
@@ -45,11 +50,6 @@ do_configure_prepend() {
 	ACLOCAL="aclocal --system-acdir=${STAGING_DATADIR}/aclocal" ./bootstrap --force
 	cd "${currentdir}"
 }
-
-EXTRA_OECONF += " \
-                 --with-systemdsystemunitdir=${systemd_system_unitdir} \
-                 --with-udevrulesdir=${sysconfdir}/udev/rules.d \
-                "
 
 do_install_append() {
         install -d "${D}${sysconfdir}/init.d"
