@@ -9,7 +9,7 @@ SECTION = "tpm"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/BSD;md5=3775480a712fc46a69647678acb234cb"
 
-DEPENDS += "autoconf-archive dbus glib-2.0 pkgconfig tpm2.0-tss"
+DEPENDS += "autoconf-archive dbus glib-2.0 pkgconfig tpm2.0-tss glib-2.0-native"
 RDEPENDS_${PN} += "libgcc dbus-glib"
 
 SRC_URI = " \
